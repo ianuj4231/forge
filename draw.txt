@@ -58,8 +58,9 @@ emergency_check_node
                                       +---------------+---------------+
                                                       |
                           intents = ["refill", "clinical", "billing", ...] parallel fan-out
-                                                       |
-                              |             +--> clinical_workflow      +--> refill_workflow
+                                                       
+                              |              
+                              |               +--> clinical_workflow      +--> refill_workflow
                               |            |    route clinician         |    extract medication
                               |            |                             |    match records
                               |            |                             |    check policy
