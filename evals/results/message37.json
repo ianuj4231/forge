@@ -1,0 +1,51 @@
+{
+  "run_at": "2026-10-18T13:05:48.359489+00:00",
+  "id": "M037",
+  "request": {
+    "id": "M037",
+    "received_at": "2026-11-09T10:36:00-06:00",
+    "channel": "portal",
+    "from_name": "Lucy Nguyen",
+    "from_contact": "lucy.nguyen@example.com",
+    "body": "What are your clinic hours?"
+  },
+  "expected": {
+    "id": "M037",
+    "patient_id": "P023",
+    "intents": [
+      "admin"
+    ],
+    "accepted_urgency": [
+      "routine"
+    ],
+    "expected_actions": [
+      "answer_directly"
+    ],
+    "must_not": [],
+    "trap": ""
+  },
+  "actual": {
+    "execution_id": "2ec7a175-61d1-419f-b91e-69cf73c334d9",
+    "id": "M037",
+    "patient_id": "P023",
+    "intents": [
+      "admin"
+    ],
+    "urgency": "routine",
+    "actions": [
+      "answer_directly"
+    ],
+    "routed_to": [],
+    "tool_calls": [
+      "find_patient"
+    ],
+    "reply_draft": "The clinic is open Mon, Tue, Wed, Thu, Fri from 09:00 to 17:00, closed for lunch from 12:00 to 13:00."
+  },
+  "evaluation": {
+    "passed": true,
+    "missing_actions": [],
+    "forbidden_actions_found": [],
+    "missing_intents": [],
+    "urgency_valid": true
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "run_at": "2026-10-18T13:06:12.048154+00:00",
+  "id": "M040",
+  "request": {
+    "id": "M040",
+    "received_at": "2026-11-09T10:50:00-06:00",
+    "channel": "sms",
+    "from_name": "Anna Rossi",
+    "from_contact": "555-0109",
+    "body": "Sofia's school needs a copy of her vaccination record, can you send it?"
+  },
+  "expected": {
+    "id": "M040",
+    "patient_id": "P009",
+    "intents": [
+      "records"
+    ],
+    "accepted_urgency": [
+      "routine"
+    ],
+    "expected_actions": [
+      "route_to_front_desk"
+    ],
+    "must_not": [],
+    "trap": ""
+  },
+  "actual": {
+    "execution_id": "89d6b4de-09d8-4073-8375-b3781cdfe48f",
+    "id": "M040",
+    "patient_id": "P009",
+    "intents": [
+      "records"
+    ],
+    "urgency": "routine",
+    "actions": [
+      "route_to_front_desk"
+    ],
+    "routed_to": [
+      "front_desk"
+    ],
+    "tool_calls": [
+      "find_patient"
+    ],
+    "reply_draft": "Your records request has been sent to the front desk for review."
+  },
+  "evaluation": {
+    "passed": true,
+    "missing_actions": [],
+    "forbidden_actions_found": [],
+    "missing_intents": [],
+    "urgency_valid": true
+  }
+}

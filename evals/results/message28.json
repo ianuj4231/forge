@@ -1,0 +1,54 @@
+{
+  "run_at": "2026-10-18T13:03:40.114908+00:00",
+  "id": "M028",
+  "request": {
+    "id": "M028",
+    "received_at": "2026-11-09T09:41:00-06:00",
+    "channel": "portal",
+    "from_name": "Nora Fitzgerald",
+    "from_contact": "nora.fitzgerald@example.com",
+    "body": "Booking a follow-up with Dr. Okafor on Wednesday the 18th please."
+  },
+  "expected": {
+    "id": "M028",
+    "patient_id": "P025",
+    "intents": [
+      "schedule"
+    ],
+    "accepted_urgency": [
+      "routine"
+    ],
+    "expected_actions": [
+      "offer_alternatives"
+    ],
+    "must_not": [
+      "book_on_leave"
+    ],
+    "trap": "Okafor is on leave 16–20 Nov."
+  },
+  "actual": {
+    "execution_id": "06c2af83-cdff-46f1-9781-5f969a7987ff",
+    "id": "M028",
+    "patient_id": "P025",
+    "intents": [
+      "schedule"
+    ],
+    "urgency": "routine",
+    "actions": [
+      "offer_alternatives"
+    ],
+    "routed_to": [],
+    "tool_calls": [
+      "find_patient",
+      "find_available_slots"
+    ],
+    "reply_draft": "The requested time with OKAFOR is unavailable. We can offer alternative appointments."
+  },
+  "evaluation": {
+    "passed": true,
+    "missing_actions": [],
+    "forbidden_actions_found": [],
+    "missing_intents": [],
+    "urgency_valid": true
+  }
+}

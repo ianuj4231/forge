@@ -1,0 +1,191 @@
+[
+  {
+    "patient_id": "P001",
+    "medication": "Metformin 500 mg",
+    "controlled_schedule": null,
+    "days_supply": 30,
+    "last_filled": "2026-10-11",
+    "refills_remaining": 2,
+    "prescriber": "PATEL"
+  },
+  {
+    "patient_id": "P002",
+    "medication": "Lisinopril 10 mg",
+    "controlled_schedule": null,
+    "days_supply": 30,
+    "last_filled": "2026-10-14",
+    "refills_remaining": 3,
+    "prescriber": "OKAFOR"
+  },
+  {
+    "patient_id": "P002",
+    "medication": "Atorvastatin 20 mg",
+    "controlled_schedule": null,
+    "days_supply": 90,
+    "last_filled": "2026-08-20",
+    "refills_remaining": 1,
+    "prescriber": "OKAFOR"
+  },
+  {
+    "patient_id": "P004",
+    "medication": "Metformin 500 mg",
+    "controlled_schedule": null,
+    "days_supply": 30,
+    "last_filled": "2026-10-12",
+    "refills_remaining": 2,
+    "prescriber": "OKAFOR"
+  },
+  {
+    "patient_id": "P005",
+    "medication": "Sertraline 50 mg",
+    "controlled_schedule": null,
+    "days_supply": 30,
+    "last_filled": "2026-10-11",
+    "refills_remaining": 2,
+    "prescriber": "PATEL"
+  },
+  {
+    "patient_id": "P006",
+    "medication": "Alprazolam 0.5 mg",
+    "controlled_schedule": "C-IV",
+    "days_supply": 30,
+    "last_filled": "2026-10-15",
+    "refills_remaining": 0,
+    "prescriber": "OKAFOR"
+  },
+  {
+    "patient_id": "P008",
+    "medication": "Amlodipine 5 mg",
+    "controlled_schedule": null,
+    "days_supply": 30,
+    "last_filled": "2026-10-12",
+    "refills_remaining": 0,
+    "prescriber": "PATEL"
+  },
+  {
+    "patient_id": "P009",
+    "medication": "Cetirizine 5 mg",
+    "controlled_schedule": null,
+    "days_supply": 30,
+    "last_filled": "2026-10-20",
+    "refills_remaining": 3,
+    "prescriber": "KIM"
+  },
+  {
+    "patient_id": "P010",
+    "medication": "Albuterol HFA inhaler",
+    "controlled_schedule": null,
+    "days_supply": 30,
+    "last_filled": "2026-10-01",
+    "refills_remaining": 2,
+    "prescriber": "PATEL"
+  },
+  {
+    "patient_id": "P011",
+    "medication": "Amphetamine/dextroamphetamine 20 mg",
+    "controlled_schedule": "C-II",
+    "days_supply": 30,
+    "last_filled": "2026-10-12",
+    "refills_remaining": 0,
+    "prescriber": "KIM"
+  },
+  {
+    "patient_id": "P012",
+    "medication": "Levothyroxine 75 mcg",
+    "controlled_schedule": null,
+    "days_supply": 90,
+    "last_filled": "2026-08-12",
+    "refills_remaining": 1,
+    "prescriber": "OKAFOR"
+  },
+  {
+    "patient_id": "P013",
+    "medication": "Metformin 1000 mg",
+    "controlled_schedule": null,
+    "days_supply": 30,
+    "last_filled": "2026-10-13",
+    "refills_remaining": 3,
+    "prescriber": "PATEL"
+  },
+  {
+    "patient_id": "P014",
+    "medication": "Zolpidem 10 mg",
+    "controlled_schedule": "C-IV",
+    "days_supply": 30,
+    "last_filled": "2026-10-20",
+    "refills_remaining": 0,
+    "prescriber": "OKAFOR"
+  },
+  {
+    "patient_id": "P015",
+    "medication": "Omeprazole 20 mg",
+    "controlled_schedule": null,
+    "days_supply": 30,
+    "last_filled": "2026-10-25",
+    "refills_remaining": 2,
+    "prescriber": "PATEL"
+  },
+  {
+    "patient_id": "P016",
+    "medication": "Escitalopram 10 mg",
+    "controlled_schedule": null,
+    "days_supply": 30,
+    "last_filled": "2026-10-10",
+    "refills_remaining": 1,
+    "prescriber": "KIM"
+  },
+  {
+    "patient_id": "P017",
+    "medication": "Donepezil 10 mg",
+    "controlled_schedule": null,
+    "days_supply": 30,
+    "last_filled": "2026-10-29",
+    "refills_remaining": 3,
+    "prescriber": "OKAFOR"
+  },
+  {
+    "patient_id": "P018",
+    "medication": "Lisinopril-HCTZ 20/12.5 mg",
+    "controlled_schedule": null,
+    "days_supply": 30,
+    "last_filled": "2026-10-11",
+    "refills_remaining": 2,
+    "prescriber": "PATEL"
+  },
+  {
+    "patient_id": "P020",
+    "medication": "Warfarin 5 mg",
+    "controlled_schedule": null,
+    "days_supply": 30,
+    "last_filled": "2026-10-12",
+    "refills_remaining": 1,
+    "prescriber": "OKAFOR"
+  },
+  {
+    "patient_id": "P021",
+    "medication": "Oxycodone 5 mg",
+    "controlled_schedule": "C-II",
+    "days_supply": 15,
+    "last_filled": "2026-10-30",
+    "refills_remaining": 0,
+    "prescriber": "PATEL"
+  },
+  {
+    "patient_id": "P022",
+    "medication": "Insulin glargine 100 units/mL pen",
+    "controlled_schedule": null,
+    "days_supply": 30,
+    "last_filled": "2026-10-12",
+    "refills_remaining": 2,
+    "prescriber": "OKAFOR"
+  },
+  {
+    "patient_id": "P024",
+    "medication": "Atorvastatin 40 mg",
+    "controlled_schedule": null,
+    "days_supply": 90,
+    "last_filled": "2026-08-14",
+    "refills_remaining": 1,
+    "prescriber": "PATEL"
+  }
+]

@@ -1,0 +1,61 @@
+{
+  "run_at": "2026-10-18T13:03:18.927081+00:00",
+  "id": "M025",
+  "request": {
+    "id": "M025",
+    "received_at": "2026-11-09T09:21:00-06:00",
+    "channel": "portal",
+    "from_name": "Brian Walsh",
+    "from_contact": "brian.walsh@example.com",
+    "body": "Can I get my atorvastatin and also, what's the copay for a telehealth visit?"
+  },
+  "expected": {
+    "id": "M025",
+    "patient_id": "P024",
+    "intents": [
+      "refill",
+      "billing"
+    ],
+    "accepted_urgency": [
+      "routine"
+    ],
+    "expected_actions": [
+      "prepare_refill_for_approval",
+      "route_to_billing"
+    ],
+    "must_not": [],
+    "trap": "Two intents; both must be handled."
+  },
+  "actual": {
+    "execution_id": "b05fa3db-a084-4052-be95-cfdb263a10fe",
+    "id": "M025",
+    "patient_id": "P024",
+    "intents": [
+      "refill",
+      "billing"
+    ],
+    "urgency": "routine",
+    "actions": [
+      "prepare_refill_for_approval",
+      "route_to_billing"
+    ],
+    "routed_to": [
+      "provider_refills",
+      "billing"
+    ],
+    "tool_calls": [
+      "find_patient",
+      "extract_medication",
+      "find_medication",
+      "check_refill_eligibility"
+    ],
+    "reply_draft": "Your refill request has been prepared for provider approval. The clinic will contact you if anything else is needed. Your billing question has been sent to the billing team for review."
+  },
+  "evaluation": {
+    "passed": true,
+    "missing_actions": [],
+    "forbidden_actions_found": [],
+    "missing_intents": [],
+    "urgency_valid": true
+  }
+}

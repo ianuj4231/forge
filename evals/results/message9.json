@@ -1,0 +1,56 @@
+{
+  "run_at": "2026-10-18T12:45:47.781903+00:00",
+  "id": "M009",
+  "request": {
+    "id": "M009",
+    "received_at": "2026-11-09T07:50:00-06:00",
+    "channel": "sms",
+    "from_name": "William Turner",
+    "from_contact": "555-0112",
+    "body": "Need my levothyroxine refilled"
+  },
+  "expected": {
+    "id": "M009",
+    "patient_id": "P012",
+    "intents": [
+      "refill"
+    ],
+    "accepted_urgency": [
+      "routine"
+    ],
+    "expected_actions": [
+      "prepare_refill_for_approval"
+    ],
+    "must_not": [],
+    "trap": ""
+  },
+  "actual": {
+    "execution_id": "18031371-3d5a-4c9e-b5c2-4712603ac26b",
+    "id": "M009",
+    "patient_id": "P012",
+    "intents": [
+      "refill"
+    ],
+    "urgency": "routine",
+    "actions": [
+      "prepare_refill_for_approval"
+    ],
+    "routed_to": [
+      "provider_refills"
+    ],
+    "tool_calls": [
+      "find_patient",
+      "extract_medication",
+      "find_medication",
+      "check_refill_eligibility"
+    ],
+    "reply_draft": "Your refill request has been prepared for provider approval. The clinic will contact you if anything else is needed."
+  },
+  "evaluation": {
+    "passed": true,
+    "missing_actions": [],
+    "forbidden_actions_found": [],
+    "missing_intents": [],
+    "urgency_valid": true
+  }
+}

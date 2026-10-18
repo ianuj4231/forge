@@ -1,0 +1,16 @@
+data_dir: .
+execution_db: executions.db
+checkpoint_db: checkpoints.db
+llm:
+  provider: openrouter
+  model: openai/gpt-4o-mini
+  base_url: https://openrouter.ai/api/v1
+  temperature: 0
+  timeout_seconds: 30
+  retry_attempts: 6
+  retry_initial_backoff_seconds: 1
+  retry_max_backoff_seconds: 30
+  fallback_without_key: true
+api:
+  title: Forge Front-Desk Agent
+  version: 0.1.0

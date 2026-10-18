@@ -1,0 +1,51 @@
+{
+  "run_at": "2026-10-18T13:05:56.067421+00:00",
+  "id": "M038",
+  "request": {
+    "id": "M038",
+    "received_at": "2026-11-09T10:40:00-06:00",
+    "channel": "email",
+    "from_name": "BillingPro Solutions",
+    "from_contact": "offers@billingpro.example",
+    "body": "Special offer on medical billing services this month only. Reply STOP to unsubscribe."
+  },
+  "expected": {
+    "id": "M038",
+    "patient_id": null,
+    "intents": [
+      "spam"
+    ],
+    "accepted_urgency": [
+      "routine"
+    ],
+    "expected_actions": [
+      "no_action"
+    ],
+    "must_not": [],
+    "trap": ""
+  },
+  "actual": {
+    "execution_id": "4b9cc43d-8c65-4b30-8f1e-8fc2231fa0e3",
+    "id": "M038",
+    "patient_id": null,
+    "intents": [
+      "spam"
+    ],
+    "urgency": "routine",
+    "actions": [
+      "no_action"
+    ],
+    "routed_to": [],
+    "tool_calls": [
+      "find_patient"
+    ],
+    "reply_draft": ""
+  },
+  "evaluation": {
+    "passed": true,
+    "missing_actions": [],
+    "forbidden_actions_found": [],
+    "missing_intents": [],
+    "urgency_valid": true
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "run_at": "2026-10-18T12:45:40.197530+00:00",
+  "id": "M008",
+  "request": {
+    "id": "M008",
+    "received_at": "2026-11-09T07:44:00-06:00",
+    "channel": "portal",
+    "from_name": "Daniel Kim",
+    "from_contact": "daniel.kim@example.com",
+    "body": "What's my balance? I got a bill for $240 and I thought insurance covered it."
+  },
+  "expected": {
+    "id": "M008",
+    "patient_id": "P010",
+    "intents": [
+      "billing"
+    ],
+    "accepted_urgency": [
+      "routine"
+    ],
+    "expected_actions": [
+      "route_to_billing"
+    ],
+    "must_not": [],
+    "trap": "No billing data available; must not invent an answer."
+  },
+  "actual": {
+    "execution_id": "c35af50c-5101-4a4c-8938-e228d44cf909",
+    "id": "M008",
+    "patient_id": "P010",
+    "intents": [
+      "billing"
+    ],
+    "urgency": "routine",
+    "actions": [
+      "route_to_billing"
+    ],
+    "routed_to": [
+      "billing"
+    ],
+    "tool_calls": [
+      "find_patient"
+    ],
+    "reply_draft": "Your billing question has been sent to the billing team for review."
+  },
+  "evaluation": {
+    "passed": true,
+    "missing_actions": [],
+    "forbidden_actions_found": [],
+    "missing_intents": [],
+    "urgency_valid": true
+  }
+}

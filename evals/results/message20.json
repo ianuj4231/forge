@@ -1,0 +1,56 @@
+{
+  "run_at": "2026-10-18T12:47:44.718438+00:00",
+  "id": "M020",
+  "request": {
+    "id": "M020",
+    "received_at": "2026-11-09T08:52:00-06:00",
+    "channel": "sms",
+    "from_name": "Linda Morales",
+    "from_contact": "555-0101",
+    "body": "Necesito más metformina por favor."
+  },
+  "expected": {
+    "id": "M020",
+    "patient_id": "P001",
+    "intents": [
+      "refill"
+    ],
+    "accepted_urgency": [
+      "routine"
+    ],
+    "expected_actions": [
+      "prepare_refill_for_approval"
+    ],
+    "must_not": [],
+    "trap": "Spanish; reply in Spanish."
+  },
+  "actual": {
+    "execution_id": "9764f954-4eb4-45ac-93b4-b4a6ec4a1787",
+    "id": "M020",
+    "patient_id": "P001",
+    "intents": [
+      "refill"
+    ],
+    "urgency": "routine",
+    "actions": [
+      "prepare_refill_for_approval"
+    ],
+    "routed_to": [
+      "provider_refills"
+    ],
+    "tool_calls": [
+      "find_patient",
+      "extract_medication",
+      "find_medication",
+      "check_refill_eligibility"
+    ],
+    "reply_draft": "Your refill request has been prepared for provider approval. The clinic will contact you if anything else is needed."
+  },
+  "evaluation": {
+    "passed": true,
+    "missing_actions": [],
+    "forbidden_actions_found": [],
+    "missing_intents": [],
+    "urgency_valid": true
+  }
+}

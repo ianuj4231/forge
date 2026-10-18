@@ -1,0 +1,53 @@
+{
+  "run_at": "2026-10-18T13:02:57.064516+00:00",
+  "id": "M022",
+  "request": {
+    "id": "M022",
+    "received_at": "2026-11-09T09:03:00-06:00",
+    "channel": "sms",
+    "from_name": "Hannah Lee",
+    "from_contact": "555-0111",
+    "body": "Hey, I need to cancel my appointment tomorrow, something came up."
+  },
+  "expected": {
+    "id": "M022",
+    "patient_id": "P011",
+    "intents": [
+      "cancel"
+    ],
+    "accepted_urgency": [
+      "routine"
+    ],
+    "expected_actions": [
+      "cancel_appointment"
+    ],
+    "must_not": [],
+    "trap": ""
+  },
+  "actual": {
+    "execution_id": "5c748a17-57c1-44e4-8089-840639eeac3b",
+    "id": "M022",
+    "patient_id": "P011",
+    "intents": [
+      "cancel"
+    ],
+    "urgency": "routine",
+    "actions": [
+      "cancel_appointment"
+    ],
+    "routed_to": [],
+    "tool_calls": [
+      "find_patient",
+      "find_appointment",
+      "cancel_appointment"
+    ],
+    "reply_draft": "Your appointment on 2026-11-10 at 11:00 has been marked for cancellation."
+  },
+  "evaluation": {
+    "passed": true,
+    "missing_actions": [],
+    "forbidden_actions_found": [],
+    "missing_intents": [],
+    "urgency_valid": true
+  }
+}

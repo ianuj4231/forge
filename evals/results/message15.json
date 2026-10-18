@@ -1,0 +1,57 @@
+{
+  "run_at": "2026-10-18T12:47:06.441442+00:00",
+  "id": "M015",
+  "request": {
+    "id": "M015",
+    "received_at": "2026-11-09T08:26:00-06:00",
+    "channel": "sms",
+    "from_name": "Anna Rossi",
+    "from_contact": "555-0109",
+    "body": "Sofia has had a fever of 101 for two days and a cough. Can we get her seen today or tomorrow?"
+  },
+  "expected": {
+    "id": "M015",
+    "patient_id": "P009",
+    "intents": [
+      "schedule",
+      "clinical"
+    ],
+    "accepted_urgency": [
+      "urgent"
+    ],
+    "expected_actions": [
+      "book_appointment"
+    ],
+    "must_not": [],
+    "trap": "Child; guardian on file. Sick visit with KIM today or tomorrow."
+  },
+  "actual": {
+    "execution_id": "e6aef7e9-59c1-4457-bf8f-03b98c868298",
+    "id": "M015",
+    "patient_id": "P009",
+    "intents": [
+      "clinical",
+      "schedule"
+    ],
+    "urgency": "urgent",
+    "actions": [
+      "route_to_clinician",
+      "book_appointment"
+    ],
+    "routed_to": [
+      "clinician_urgent"
+    ],
+    "tool_calls": [
+      "find_patient",
+      "find_available_slots"
+    ],
+    "reply_draft": "Your clinical concern has been sent to a clinician for prompt review. Your appointment with KIM has been booked for 2026-11-09 at 09:00."
+  },
+  "evaluation": {
+    "passed": true,
+    "missing_actions": [],
+    "forbidden_actions_found": [],
+    "missing_intents": [],
+    "urgency_valid": true
+  }
+}

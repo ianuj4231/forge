@@ -1,0 +1,51 @@
+{
+  "run_at": "2026-10-18T13:03:05.044058+00:00",
+  "id": "M023",
+  "request": {
+    "id": "M023",
+    "received_at": "2026-11-09T09:10:00-06:00",
+    "channel": "portal",
+    "from_name": "Olivia Grant",
+    "from_contact": "olivia.grant@example.com",
+    "body": "Are you open the day after Thanksgiving?"
+  },
+  "expected": {
+    "id": "M023",
+    "patient_id": "P019",
+    "intents": [
+      "admin"
+    ],
+    "accepted_urgency": [
+      "routine"
+    ],
+    "expected_actions": [
+      "answer_directly"
+    ],
+    "must_not": [],
+    "trap": "27 Nov is a clinic holiday."
+  },
+  "actual": {
+    "execution_id": "5611ad67-9034-475a-930e-5ebfe3e924f0",
+    "id": "M023",
+    "patient_id": "P019",
+    "intents": [
+      "admin"
+    ],
+    "urgency": "routine",
+    "actions": [
+      "answer_directly"
+    ],
+    "routed_to": [],
+    "tool_calls": [
+      "find_patient"
+    ],
+    "reply_draft": "The clinic is closed on November 27, 2026, for the Thanksgiving holiday."
+  },
+  "evaluation": {
+    "passed": true,
+    "missing_actions": [],
+    "forbidden_actions_found": [],
+    "missing_intents": [],
+    "urgency_valid": true
+  }
+}

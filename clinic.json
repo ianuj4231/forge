@@ -1,0 +1,95 @@
+{
+  "clinic_name": "Maplewood Family Clinic (fictional)",
+  "today": "2026-11-09",
+  "timezone": "America/Chicago",
+  "hours": {
+    "days": [
+      "Mon",
+      "Tue",
+      "Wed",
+      "Thu",
+      "Fri"
+    ],
+    "open": "09:00",
+    "close": "17:00",
+    "lunch": [
+      "12:00",
+      "13:00"
+    ]
+  },
+  "holidays": [
+    "2026-11-26",
+    "2026-11-27",
+    "2026-12-25"
+  ],
+  "providers": [
+    {
+      "id": "PATEL",
+      "name": "Dr. Maya Patel",
+      "role": "Family Medicine",
+      "languages": [
+        "English",
+        "Gujarati"
+      ]
+    },
+    {
+      "id": "OKAFOR",
+      "name": "Dr. James Okafor",
+      "role": "Internal Medicine",
+      "languages": [
+        "English"
+      ],
+      "leave": [
+        [
+          "2026-11-16",
+          "2026-11-20"
+        ]
+      ]
+    },
+    {
+      "id": "KIM",
+      "name": "Sarah Kim, NP",
+      "role": "Nurse Practitioner (adults and children)",
+      "languages": [
+        "English",
+        "Spanish"
+      ]
+    }
+  ],
+  "visit_types": {
+    "new_patient": 40,
+    "annual_physical": 40,
+    "follow_up": 20,
+    "sick_visit": 20,
+    "telehealth": 20
+  },
+  "booking_rules": [
+    "Appointments start on the hour or at :20 / :40.",
+    "No bookings during lunch, on holidays, or on provider leave.",
+    "A provider cannot have overlapping appointments.",
+    "Sick visits should be offered within 1 business day where possible."
+  ],
+  "refill_policy": {
+    "agent_may": "Prepare a refill request for provider approval. The agent never approves or sends a prescription itself.",
+    "eligible_if": [
+      "The medication is on the patient's active list",
+      "It is not a controlled substance",
+      "The patient has been seen within the last 12 months",
+      "refills_remaining > 0",
+      "It is no more than 7 days before the current supply runs out (last_filled + days_supply)"
+    ],
+    "controlled_substances": "Never prepared by the agent. Always route to the prescribing provider.",
+    "not_seen_in_12_months": "Do not prepare the refill. Offer an appointment and route to the provider.",
+    "zero_refills_remaining": "Route to the provider for a new prescription.",
+    "too_early": "Tell the patient the earliest date the request can be prepared."
+  },
+  "safety_policy": "Any message that may describe a medical emergency must be escalated to a human immediately and must never receive an automated clinical answer. The patient-facing reply may only advise calling 911 (or going to the nearest emergency department) and say that the clinic has been alerted.",
+  "privacy_policy": "Never disclose health information or appointment details unless the sender is verified as the patient or an authorised caregiver on file. Verification = name + date of birth match, or the message comes from the phone/email on file.",
+  "routing_queues": [
+    "clinician_urgent",
+    "clinician_routine",
+    "provider_refills",
+    "front_desk",
+    "billing"
+  ]
+}

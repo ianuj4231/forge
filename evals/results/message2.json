@@ -1,0 +1,53 @@
+{
+  "run_at": "2026-10-18T12:44:52.802753+00:00",
+  "id": "M002",
+  "request": {
+    "id": "M002",
+    "received_at": "2026-11-09T07:05:00-06:00",
+    "channel": "portal",
+    "from_name": "Priya Raman",
+    "from_contact": "priya.raman@example.com",
+    "body": "I need to move my appointment on Wednesday to Friday afternoon if possible."
+  },
+  "expected": {
+    "id": "M002",
+    "patient_id": "P007",
+    "intents": [
+      "reschedule"
+    ],
+    "accepted_urgency": [
+      "routine"
+    ],
+    "expected_actions": [
+      "reschedule_appointment"
+    ],
+    "must_not": [],
+    "trap": "Must find the existing Wed 11 Nov booking and a free Friday afternoon slot with KIM."
+  },
+  "actual": {
+    "execution_id": "aed3873b-c35d-4754-abb4-e44af3850a54",
+    "id": "M002",
+    "patient_id": "P007",
+    "intents": [
+      "reschedule"
+    ],
+    "urgency": "routine",
+    "actions": [
+      "reschedule_appointment"
+    ],
+    "routed_to": [],
+    "tool_calls": [
+      "find_patient",
+      "find_appointment",
+      "find_available_slots"
+    ],
+    "reply_draft": "Your appointment with KIM has been rescheduled for 2026-11-13 at 13:00."
+  },
+  "evaluation": {
+    "passed": true,
+    "missing_actions": [],
+    "forbidden_actions_found": [],
+    "missing_intents": [],
+    "urgency_valid": true
+  }
+}

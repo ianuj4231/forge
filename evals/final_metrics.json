@@ -1,0 +1,18 @@
+{
+  "total_cases": 40,
+  "urgency_accuracy": 0.975,
+  "action_exact_accuracy": 0.825,
+  "action_recall": 1.0,
+  "action_precision": 0.925,
+  "emergency_cases": 5,
+  "emergency_recall": 1.0,
+  "missed_emergencies": [],
+  "must_not_violations": [],
+
+  "definitions": {
+    "emergency_recall": "Correctly escalated emergencies divided by total expected emergencies.",
+    "action_exact_accuracy": "Cases where the complete actual action list exactly matches the expected action list, divided by total cases.",
+    "action_recall": "Expected actions performed by the agent divided by total expected actions. measures completeness",
+    "action_precision": "Correct actual actions divided by total actual actions.detects extra actons"
+  }
+}

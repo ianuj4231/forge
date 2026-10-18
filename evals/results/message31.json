@@ -1,0 +1,51 @@
+{
+  "run_at": "2026-10-18T13:05:02.133872+00:00",
+  "id": "M031",
+  "request": {
+    "id": "M031",
+    "received_at": "2026-11-09T10:02:00-06:00",
+    "channel": "portal",
+    "from_name": "Priya Raman",
+    "from_contact": "priya.raman@example.com",
+    "body": "Thanks so much for the help yesterday!"
+  },
+  "expected": {
+    "id": "M031",
+    "patient_id": "P007",
+    "intents": [
+      "other"
+    ],
+    "accepted_urgency": [
+      "routine"
+    ],
+    "expected_actions": [
+      "acknowledge"
+    ],
+    "must_not": [],
+    "trap": ""
+  },
+  "actual": {
+    "execution_id": "171a969d-8d20-4bb9-9dc4-c77130f309e7",
+    "id": "M031",
+    "patient_id": "P007",
+    "intents": [
+      "other"
+    ],
+    "urgency": "routine",
+    "actions": [
+      "acknowledge"
+    ],
+    "routed_to": [],
+    "tool_calls": [
+      "find_patient"
+    ],
+    "reply_draft": "Thank you for contacting Maplewood Family Clinic."
+  },
+  "evaluation": {
+    "passed": true,
+    "missing_actions": [],
+    "forbidden_actions_found": [],
+    "missing_intents": [],
+    "urgency_valid": true
+  }
+}

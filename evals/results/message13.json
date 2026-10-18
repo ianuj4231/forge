@@ -1,0 +1,56 @@
+{
+  "run_at": "2026-10-18T12:46:52.850253+00:00",
+  "id": "M013",
+  "request": {
+    "id": "M013",
+    "received_at": "2026-11-09T08:15:00-06:00",
+    "channel": "portal",
+    "from_name": "Fatima Hassan",
+    "from_contact": "fatima.hassan@example.com",
+    "body": "Please refill omeprazole"
+  },
+  "expected": {
+    "id": "M013",
+    "patient_id": "P015",
+    "intents": [
+      "refill"
+    ],
+    "accepted_urgency": [
+      "routine"
+    ],
+    "expected_actions": [
+      "refill_too_early"
+    ],
+    "must_not": [
+      "prepare_refill_for_approval"
+    ],
+    "trap": "Supply runs out 24 Nov; earliest request date is 17 Nov."
+  },
+  "actual": {
+    "execution_id": "bcbea94b-f4ce-4dcb-88b9-760a1c74a2d6",
+    "id": "M013",
+    "patient_id": "P015",
+    "intents": [
+      "refill"
+    ],
+    "urgency": "routine",
+    "actions": [
+      "refill_too_early"
+    ],
+    "routed_to": [],
+    "tool_calls": [
+      "find_patient",
+      "extract_medication",
+      "find_medication",
+      "check_refill_eligibility"
+    ],
+    "reply_draft": "It is too early to prepare this refill. The earliest request date is 2026-11-17."
+  },
+  "evaluation": {
+    "passed": true,
+    "missing_actions": [],
+    "forbidden_actions_found": [],
+    "missing_intents": [],
+    "urgency_valid": true
+  }
+}

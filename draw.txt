@@ -1,0 +1,113 @@
+CURRENT FRONT-DESK GRAPH
+=========================
+
+The graph now implements the verified refill branch.
+Schedule, billing, records, cancellation, and other non-refill workflows
+are still intentionally pending.
+
+The intent_workflow_fanout_node and merge_workflow_results_node shown below
+are the scalable design target for the next implementation step. They are
+shown here to explain the intended architecture; the current code still uses
+the refill path directly.
+
+
+FULL FLOW
+---------
+
+START
+  |
+  v
+verification_node
+  |  Look up sender using permitted identity checks.
+  |  Save verified, patient_id, patient_record, and find_patient.
+  v
+verification_router_node
+  |
+  v
+intent_and_urgency_classifier_node
+  |  Structured Pydantic output:
+  |  intents + urgency.
+  v
+emergency_check_node
+  |
+  +-- emergency --------> emergency_node  (Inside emergency_node, the case is routed to the clinician queue)
+  |                         |  
+  |                         v 
+  |                        END
+  |
+  +-- not_emergency ----> unverified_check_node
+                              |
+                              +-- unverified --> front_desk_verification_node
+                              |                       |
+                              |                       v
+                              |                      END
+                              |
+                               +-- verified ----> verified_non_emergency_dispatch_node
+                                                        |
+                                                        | Read state["intents"] already
+                                                        | produced by the classifier.
+                                                        | Do not classify again.
+                                                        |
+                                                        v
+                                      +-------------------------------+
+                                      | intent_workflow_fanout_node    |
+                                      |                               |
+                                      | Read the intents list and     |
+                                      | create one work item per      |
+                                      | supported intent.             |
+                                      +---------------+---------------+
+                                                      |
+                          intents = ["refill", "clinical", "billing", ...] parallel fan-out
+                                                       |
+                              |             +--> clinical_workflow      +--> refill_workflow
+                              |            |    route clinician         |    extract medication
+                              |            |                             |    match records
+                              |            |                             |    check policy
+                              |----------> |
+                                           +--> billing_workflow       +--> schedule_workflow
+                                          |    route billing           |    find requested details
+                                          |    queue                   |    provider/date/time
+                                          |
+                                          +--> reschedule_workflow   +--> new_patient_workflow
+                                          |    find appointment        |    offer new-patient booking
+                                          |    from appointments.json |
+                                          |    find replacement slot   |
+                                          |
+                                          +--> records_workflow       +--> cancel_workflow
+                                          |    verify patient          |    find appointment
+                                          |    route records           |    cancel appointment
+                                          |
+                                          +--> admin_workflow         +--> third_party_workflow
+                                          |    answer known clinic     |    verify caregiver/identity
+                                          |    questions               |    or decline disclosure
+                                          |
+                                          +--> other_workflow         +--> spam_workflow
+                                                route_to_front_desk          no_action; no tools
+
+                                                            |
+
+                                            All branches above are direct siblings of the fan-out.
+                                            They are selected from state["intents"] and do not form
+                                            a sequential chain.
+                                                            |
+                                            +--------------+--------------+
+                                            |                             |
+                                            v                             v
+                                      branch result objects          workflow_results list
+                                            |                             |
+                                            +--------------+--------------+
+                                                        |
+                                                        v
+                                            +-------------------------------+
+                                            | merge_workflow_results_node   |
+                                            |                               |
+                                            | Combine branch actions,      |
+                                            | queues, tool calls, and       |
+                                            | reply information.            |
+                                            +---------------+---------------+
+                                                       |
+                                                       v
+                                              save_output_node
+                                                       |
+                                                       v
+                                                      END

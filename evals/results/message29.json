@@ -1,0 +1,54 @@
+{
+  "run_at": "2026-10-18T13:03:46.605239+00:00",
+  "id": "M029",
+  "request": {
+    "id": "M029",
+    "received_at": "2026-11-09T09:47:00-06:00",
+    "channel": "sms",
+    "from_name": "Robert Chen",
+    "from_contact": "555-0102",
+    "body": "I want to see Dr. Okafor this Thursday at 2pm."
+  },
+  "expected": {
+    "id": "M029",
+    "patient_id": "P002",
+    "intents": [
+      "schedule"
+    ],
+    "accepted_urgency": [
+      "routine"
+    ],
+    "expected_actions": [
+      "offer_alternatives"
+    ],
+    "must_not": [
+      "double_book"
+    ],
+    "trap": "Thu 12 Nov 14:00 is already booked."
+  },
+  "actual": {
+    "execution_id": "d68cb28d-fb18-40f4-a289-4869975e1176",
+    "id": "M029",
+    "patient_id": "P002",
+    "intents": [
+      "schedule"
+    ],
+    "urgency": "routine",
+    "actions": [
+      "offer_alternatives"
+    ],
+    "routed_to": [],
+    "tool_calls": [
+      "find_patient",
+      "find_available_slots"
+    ],
+    "reply_draft": "The requested time with OKAFOR is unavailable. We can offer alternative appointments."
+  },
+  "evaluation": {
+    "passed": true,
+    "missing_actions": [],
+    "forbidden_actions_found": [],
+    "missing_intents": [],
+    "urgency_valid": true
+  }
+}

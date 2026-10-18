@@ -1,0 +1,56 @@
+{
+  "run_at": "2026-10-18T13:05:41.101224+00:00",
+  "id": "M036",
+  "request": {
+    "id": "M036",
+    "received_at": "2026-11-09T10:31:00-06:00",
+    "channel": "sms",
+    "from_name": "Claire Ellis",
+    "from_contact": "555-0177",
+    "body": "Mom's donepezil refill please"
+  },
+  "expected": {
+    "id": "M036",
+    "patient_id": "P017",
+    "intents": [
+      "refill"
+    ],
+    "accepted_urgency": [
+      "routine"
+    ],
+    "expected_actions": [
+      "refill_too_early"
+    ],
+    "must_not": [
+      "prepare_refill_for_approval"
+    ],
+    "trap": "Caregiver on file; supply lasts to 28 Nov."
+  },
+  "actual": {
+    "execution_id": "06b40237-a506-4d13-9024-026d68cee217",
+    "id": "M036",
+    "patient_id": "P017",
+    "intents": [
+      "refill"
+    ],
+    "urgency": "routine",
+    "actions": [
+      "refill_too_early"
+    ],
+    "routed_to": [],
+    "tool_calls": [
+      "find_patient",
+      "extract_medication",
+      "find_medication",
+      "check_refill_eligibility"
+    ],
+    "reply_draft": "It is too early to prepare this refill. The earliest request date is 2026-11-21."
+  },
+  "evaluation": {
+    "passed": true,
+    "missing_actions": [],
+    "forbidden_actions_found": [],
+    "missing_intents": [],
+    "urgency_valid": true
+  }
+}

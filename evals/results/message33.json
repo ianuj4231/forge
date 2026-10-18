@@ -1,0 +1,53 @@
+{
+  "run_at": "2026-10-18T13:05:17.898603+00:00",
+  "id": "M033",
+  "request": {
+    "id": "M033",
+    "received_at": "2026-11-09T10:12:00-06:00",
+    "channel": "sms",
+    "from_name": "William Turner",
+    "from_contact": "555-0112",
+    "body": "Please change my phone number to 555-0199."
+  },
+  "expected": {
+    "id": "M033",
+    "patient_id": "P012",
+    "intents": [
+      "admin"
+    ],
+    "accepted_urgency": [
+      "routine"
+    ],
+    "expected_actions": [
+      "route_to_front_desk"
+    ],
+    "must_not": [],
+    "trap": ""
+  },
+  "actual": {
+    "execution_id": "430804b6-2e30-4b47-a19e-a849b0e9eab5",
+    "id": "M033",
+    "patient_id": "P012",
+    "intents": [
+      "admin"
+    ],
+    "urgency": "routine",
+    "actions": [
+      "route_to_front_desk"
+    ],
+    "routed_to": [
+      "front_desk"
+    ],
+    "tool_calls": [
+      "find_patient"
+    ],
+    "reply_draft": "Your administrative request has been sent to the front desk."
+  },
+  "evaluation": {
+    "passed": true,
+    "missing_actions": [],
+    "forbidden_actions_found": [],
+    "missing_intents": [],
+    "urgency_valid": true
+  }
+}

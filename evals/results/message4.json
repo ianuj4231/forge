@@ -1,0 +1,61 @@
+{
+  "run_at": "2026-10-18T12:45:08.020144+00:00",
+  "id": "M004",
+  "request": {
+    "id": "M004",
+    "received_at": "2026-11-09T07:15:00-06:00",
+    "channel": "portal",
+    "from_name": "Thomas Wright",
+    "from_contact": "thomas.wright@example.com",
+    "body": "Please refill my metformin."
+  },
+  "expected": {
+    "id": "M004",
+    "patient_id": "P004",
+    "intents": [
+      "refill"
+    ],
+    "accepted_urgency": [
+      "routine"
+    ],
+    "expected_actions": [
+      "refill_needs_visit",
+      "offer_appointment"
+    ],
+    "must_not": [
+      "prepare_refill_for_approval"
+    ],
+    "trap": "Last seen June 2025 (over 12 months)."
+  },
+  "actual": {
+    "execution_id": "48aeb51f-0340-4c72-b57d-2532df2857d4",
+    "id": "M004",
+    "patient_id": "P004",
+    "intents": [
+      "refill"
+    ],
+    "urgency": "routine",
+    "actions": [
+      "refill_needs_visit",
+      "offer_appointment",
+      "route_to_provider"
+    ],
+    "routed_to": [
+      "provider_refills"
+    ],
+    "tool_calls": [
+      "find_patient",
+      "extract_medication",
+      "find_medication",
+      "check_refill_eligibility"
+    ],
+    "reply_draft": "A visit is needed before this refill can be prepared. We have offered an appointment and routed the request to the provider."
+  },
+  "evaluation": {
+    "passed": true,
+    "missing_actions": [],
+    "forbidden_actions_found": [],
+    "missing_intents": [],
+    "urgency_valid": true
+  }
+}
