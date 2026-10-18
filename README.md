@@ -84,7 +84,6 @@ I would improve classification calibration with a larger reviewed example set, a
 
 4) even though i've used langgraph checkpointer for resumable recovery based on thread_id, still i must see if the architecture at every step supports this, to avoid preventing duplicate work. 
 
-5) although im confident with the architecture and schemas  in this, still code needs  be done slowly, instead of submitting the architecture and  having agent to code... so i feel little slow implementation/coding is better for this case. with very strict line by line code review, coz health and payment systems are 2 sensitive fields. accuracy is more important than speed. now, due to time constraints,  since i was confident with architecture and diagram part already, i had to rush on the implementation part. 
 
 
 ## Run
