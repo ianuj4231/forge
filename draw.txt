@@ -46,7 +46,7 @@ emergency_check_node
                                                         |
                                                         | Read state["intents"] already
                                                         | produced by the classifier.
-                                                        | Do not classify again.
+                                                        | Do not classify again.This need not a repeated LLM call.
                                                         |
                                                         v
                                       +-------------------------------+
