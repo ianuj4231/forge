@@ -70,6 +70,27 @@ The evaluation harness joins messages and labels by message ID and writes per-me
 
 The agent currently reports 40 evaluated cases, 97.5% urgency accuracy, 100% action recall, 92.5% action precision, and 100% emergency recall. The main errors are stricter action-list mismatches and occasional over-classification of a symptom as an additional clinical intent. `must_not` violations and missed emergencies are reported explicitly.
 
+pasting the results here:
+```json
+{
+  "total_cases": 40,
+  "urgency_accuracy": 0.975,
+  "action_exact_accuracy": 0.825,
+  "action_recall": 1.0,
+  "action_precision": 0.925,
+  "emergency_cases": 5,
+  "emergency_recall": 1.0,
+  "missed_emergencies": [],
+  "must_not_violations": [],
+  "definitions": {
+    "emergency_recall": "Correctly escalated emergencies divided by total expected emergencies.",
+    "action_exact_accuracy": "Cases where the complete actual action list exactly matches the expected action list, divided by total cases.",
+    "action_recall": "Expected actions performed by the agent divided by total expected actions; measures completeness.",
+    "action_precision": "Correct actual actions divided by total actual actions; detects extra actions."
+  }
+}
+```
+
 Each per-message result includes the request, expected label, actual agent response, and pass/fail evaluation in [`evals/results/`](evals/results/).
 
 ## With Another Week
