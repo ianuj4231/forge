@@ -7,6 +7,8 @@
 
 See the complete architecture and workflow diagram in [`draw.txt`](draw.txt).
 
+For a magnified state-machine view of the refill flow, see [`draw_refill.txt`](draw_refill.txt).
+
 ### Reasoning:
 
 The service follows a **state-machine design** built from custom LangGraph nodes. Each node performs one clear step: verify the sender, classify the message, check for emergencies, dispatch supported intents, run the relevant workflow, merge the results, and persist the outcome. The state moves progressively through these guarded steps instead of allowing one open-ended LLM call to control the whole process.

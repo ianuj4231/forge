@@ -1,0 +1,189 @@
+REFILL WORKFLOW — MAGNIFIED STATE-MACHINE VIEW
+===============================================
+
+Incoming verified request
+          |
+          v
+refill_workflow_node
+          |
+          v
+Read the verified patient_id and the raw message from state.
+
+          |
+          v
+1. EXTRACT THE REQUESTED MEDICATION
+-----------------------------------
+
+Make one structured LLM call using the raw message.
+The LLM is asked to extract only the medication explicitly requested
+for refill. It must not decide eligibility or approve anything.
+
+[
+
+examples:
+
+ Example structured extraction
+-----------------------------
+
+Raw patient message:
+
+"Please refill my lisinopril 10 mg tablets."
+
+LLM output:
+
+{
+  "requested_medication": "Lisinopril 10 mg tablets"
+}
+
+The LLM only extracts what was explicitly named. It does not check
+eligibility, refills, dates, or approval status.
+
+If the medication is not named:
+
+Raw patient message:
+
+"Please refill my medication."
+
+LLM output:
+
+{
+  "requested_medication": null
+}
+
+If the message contains clinical text:
+
+Raw patient message:
+
+"Please refill my warfarin. My gums are bleeding and my stools are dark."
+
+LLM output:
+
+{
+  "requested_medication": "Warfarin"
+}
+
+The bleeding is not extracted as medication information. Emergency handling
+is performed separately by classification and safety-routing logic.
+
+The Pydantic schema allows only these output shapes:
+
+{
+  "requested_medication": "explicit medication text"
+}
+
+or:
+
+{
+  "requested_medication": null
+}
+
+]
+
+
+          |
+          v
+MedicationExtraction Pydantic schema
+          |
+          +-- medication name/strength found?
+          |          |
+          |          +-- NO --> Ask the patient to clarify the medication
+          |          |          Do not prepare a refill and goes to END node.
+          |          |
+          |          +-- YES
+          |               |
+          |               v
+          |        Continue to record matching
+
+Assumption: one requested medication is assumed to match at most one
+medication item in the patient's active medication records. That single
+matching record is saved as state["pinpointed_item"]. If no exact match
+exists, do not guess; clarify or route for review.
+
+          |
+          v
+2. LOAD AND MATCH MEDICATION RECORDS
+------------------------------------
+
+Load all medication items from medications.json.
+          |
+          v
+Filter records by the verified patient_id.
+          |
+          v
+Normalize names and strengths for comparison.
+          |
+          v
+Match the extracted medication against the patient's records.
+          |
+          +-- NO exact matching item --> Do not prepare a refill
+          |                              Ask for clarification or route
+          |                              the request for provider review
+          |
+          +-- YES exact matching item
+                    |
+                    v
+             Save ONE record as pinpointed_item
+
+          |
+          v
+3. APPLY clinic.json REFILL POLICY
+----------------------------------
+
+Use the fixed policy date and evaluate each rule in order.
+
+if medication is not on the patient's active list:
+    do not prepare the refill
+    clarify or route for review
+
+else if medication is a controlled substance:
+    never prepare it automatically
+    route to provider_refills
+
+else if the patient has not been seen within the last 12 months:
+    do not prepare the refill
+    offer an appointment
+    route to the provider
+
+else if refills_remaining == 0:
+    do not prepare the refill
+    route to provider_refills for a new prescription
+
+else if the request is earlier than the seven-day refill window:
+    do not prepare the refill
+    tell the patient the earliest eligible date
+
+else:
+    prepare_refill_for_approval only
+    route to provider_refills
+
+The agent never approves or sends a prescription.
+
+          |
+          v
+4. SAVE THE REFILL RESULT
+-------------------------
+
+Save actions, routing queue, tool calls, reply draft, requested medication,
+and pinpointed_item into agent state.
+          |
+          v
+Merge with any other intent workflow results.
+          |
+          v
+Persist the final merged result in executions.db.
+          |
+          v
+                         END
+
+Safety boundary:
+The raw message can request an action, but it cannot change identity checks,
+medication matching, clinic.json policy, provider routing, or approval rules.
+
+
+////
+Code references:
+- graph.py:265 -> calls llm.extract_medication(...)
+- schemas.py:48 -> MedicationExtraction Pydantic schema
+- llm.py:129 -> with_structured_output(MedicationExtraction)
+- llm.py:133 -> invokes the structured LLM call
+- llm.py:60 -> medication extraction prompt
